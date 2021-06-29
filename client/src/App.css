@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.big_p {
+  text-align: center;
+  font-size: 72px;
+}
+
+.site_title {
+  font-size: 32px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.site_title:hover {
+  animation: move linear 2000ms infinite;
+}
+
+.site_title.auth {
+  font-size: 24px;
+  float: right;
+  white-space: nowrap;
+}
+
+.site_title.auth:hover {
+  animation: move linear 2000ms infinite;
+}
+
+@keyframes move {
+  0% {
+    text-shadow: 4px -4px 0 rgb(0, 150, 32), 3px -3px 0 rgb(0, 150, 32),
+      2px -2px 0 rgb(0, 150, 32), 1px -1px 0 rgb(0, 150, 32),
+      -4px 4px 0 rgb(158, 0, 105), -3px 3px 0 rgb(158, 0, 105),
+      -2px 2px 0 rgb(158, 0, 105), -1px 1px 0 rgb(158, 0, 105);
+  }
+  25% {
+    text-shadow: -4px -4px 0 rgb(158, 0, 105), -3px -3px 0 rgb(158, 0, 105),
+      -2px -2px 0 rgb(158, 0, 105), -1px -1px 0 rgb(158, 0, 105),
+      4px 4px 0 rgb(0, 150, 32), 3px 3px 0 rgb(0, 150, 32),
+      2px 2px 0 rgb(0, 150, 32), 1px 1px 0 rgb(0, 150, 32);
+  }
+  50% {
+    text-shadow: -4px 4px 0 rgb(0, 150, 32), -3px 3px 0 rgb(0, 150, 32),
+      -2px 2px 0 rgb(0, 150, 32), -1px 1px 0 rgb(0, 150, 32),
+      4px -4px 0 rgb(158, 0, 105), 3px -3px 0 rgb(158, 0, 105),
+      2px -2px 0 rgb(158, 0, 105), 1px -1px 0 rgb(158, 0, 105);
+  }
+  75% {
+    text-shadow: 4px 4px 0 rgb(158, 0, 105), 3px 3px 0 rgb(158, 0, 105),
+      2px 2px 0 rgb(158, 0, 105), 1px 1px 0 rgb(158, 0, 105),
+      -4px -4px 0 rgb(0, 150, 32), -3px -3px 0 rgb(0, 150, 32),
+      -2px -2px 0 rgb(0, 150, 32), -1px -1px 0 rgb(0, 150, 32);
+  }
+  100% {
+    text-shadow: 4px -4px 0 rgb(0, 150, 32), 3px -3px 0 rgb(0, 150, 32),
+      2px -2px 0 rgb(0, 150, 32), 1px -1px 0 rgb(0, 150, 32),
+      -4px 4px 0 rgb(158, 0, 105), -3px 3px 0 rgb(158, 0, 105),
+      -2px 2px 0 rgb(158, 0, 105), -1px 1px 0 rgb(158, 0, 105);
+  }
+}
