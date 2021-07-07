@@ -1,19 +1,10 @@
 import React, { useState, useContext } from "react";
-import {
-  Container,
-  FormControl,
-  InputLabel,
-  Input,
-  FormHelperText,
-} from "@material-ui/core";
+import { Container, FormControl, FormHelperText } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import IconButton from "@material-ui/core/IconButton";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { HOME_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE } from "../utils/consts";
@@ -52,6 +43,7 @@ const Auth = observer(() => {
   const isLogin = location.pathname === LOGIN_ROUTE;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const classes = useStyles();
 
   const click = async () => {
     try {
@@ -65,19 +57,8 @@ const Auth = observer(() => {
       user.setIsAuth(true);
       history.push(HOME_ROUTE);
     } catch (e) {
-      alert(`${e}`);
+      alert(e.response.data.message);
     }
-  };
-
-  const classes = useStyles();
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
-  const [values, setValues] = useState({
-    showPassword: false,
-  });
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
   };
 
   return (
@@ -94,14 +75,16 @@ const Auth = observer(() => {
           >
             {isLogin ? "Authorization" : "Registration"}
           </Typography>
+          <Typography className={classes.space}></Typography>
           <Container className={classes.auth}>
-            <FormControl
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            >
-              <InputLabel htmlFor="my-email">Email</InputLabel>
-              <Input id="my-email" aria-describedby="my-helper-text" />
+            <FormControl>
+              <TextField
+                required
+                id="standard-email-input"
+                label="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <FormHelperText id="my-helper-text">
                 We'll never share your email.
               </FormHelperText>
@@ -109,29 +92,15 @@ const Auth = observer(() => {
           </Container>
           <Typography className={classes.space}></Typography>
           <Container className={classes.auth}>
-            <FormControl
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            >
-              <InputLabel htmlFor="standard-adornment-password">
-                Password
-              </InputLabel>
-              <Input
-                id="standard-adornment-password"
-                type={values.showPassword ? "text" : "password"}
-                value={values.password}
-                onChange={handleChange("password")}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                    >
-                      {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                }
+            <FormControl>
+              <TextField
+                required
+                id="standard-password-input"
+                label="Password"
+                type="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <FormHelperText id="my-helper-text">
                 We'll never share your password.
